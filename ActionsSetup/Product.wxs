@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="ActionsSetup" Language="1033" Version="1.0.0.0" Manufacturer="ActionsSetup" UpgradeCode="c938e6b4-b1a7-4705-ae0b-0d52d9e63f13">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="ActionsSetup" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="ActionsSetup" />
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="ActionsSetupApp" Guid="22cb5eba-14a3-441b-b3eb-799b6bac3e81">
+        <File Id="ActionsSetupApp" Name="WindowsFormsActions.exe" Source="$(var.WindowsFormsActions.TargetDir)WindowsFormsActions.exe"></File>
+        <File Id="Calculate" Name="Calculate.dll" Source="$(var.WindowsFormsActions.TargetDir)Calculate.dll"></File>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
