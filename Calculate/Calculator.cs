@@ -10,7 +10,7 @@ namespace Calculate
     {
         public double Add(double x, double y)
         {
-            return x + y;
+            return x + y; 
         }
     }
 }
