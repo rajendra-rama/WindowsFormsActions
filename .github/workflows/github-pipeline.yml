@@ -73,11 +73,11 @@ jobs:
       
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Build solution
-      run: msbuild $env:Solution_Name /t:Clean,Build /p:Configuration=Release 
+      run: msbuild $env:Solution_Name /t:Clean,Build /p:Configuration=Release /p:PublishUrl="../_build" 
      
      # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Build Wix project
-      run: msbuild $env:Wix_Project_Path /t:Clean,Build /p:Configuration=Release 
+      run: msbuild $env:Wix_Project_Path /t:Clean,Build /p:Configuration=Release /p:PublishUrl="../_build" 
               
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
